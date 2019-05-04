@@ -30,5 +30,11 @@ namespace TeamProject
             LoginWindow dlg = new LoginWindow();
             dlg.ShowDialog();
         }
+
+        private void BtnSignup_Click(object sender, RoutedEventArgs e)
+        {
+            SignUp dlg = new SignUp();
+            dlg.ShowDialog();
+        }
     }
 }
