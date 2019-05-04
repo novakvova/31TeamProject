@@ -127,32 +127,35 @@ namespace TeamProject
         {
             User user = new User()
             {
-                FirstName = txtNewLogin.Text,
+                Email = txtNewLogin.Text,
+                FirstName=txtNewFirstName.Text,
+                LastName=txtNewLastName.Text,
                 Password = txtNewPassword.Password,
             };
             try
             {
                 using (TransactionScope scope = new TransactionScope())
                 {
-                    string strCon = ConfigurationManager.AppSettings["DefaultConnection"];
-                    using (SqlConnection con = new SqlConnection(@"Data Source = SLIMBOYFAT-ПК; Initial Catalog = LoginWPF; Integrated Security = True"))
+                    //string strCon = ConfigurationManager.AppSettings["DefaultConnection"];
+                    //using (SqlConnection con = new SqlConnection(@"Data Source = SLIMBOYFAT-ПК; Initial Catalog = LoginWPF; Integrated Security = True"))
+                    using (SqlConnection con = new SqlConnection(@"Data Source=karaka123.mssql.somee.com; Initial Catalog = karaka123; User ID=gmirakivan_SQLLogin_1; Password=8b1m2f1gnt"))
                     {
                         con.Open();
                         SqlCommand command = new SqlCommand();
                         command.Connection = con;
-                        var query = $"INSERT INTO [tblUserWPF] ([UserName], [Password]) VALUES('{user.FirstName}','{user.Password}')";
+                        var query = $"INSERT INTO [tblUsers] ([Email], [FirstName], [LastName], [Password]) VALUES('{user.Email}','{user.FirstName}','{user.LastName}','{user.Password}')";
                         command.CommandText = query;
                         int userId = 0;
                         var count = command.ExecuteNonQuery();
                         if (count == 1)
                         {
-                            query = "SELECT SCOPE_IDENTITY() AS UserId";
+                            query = "SELECT SCOPE_IDENTITY() AS ID";
                             command.CommandText = query;
                             SqlDataReader reader = command.ExecuteReader();
                             if (reader.Read())
                             {
                                 userId = int
-                                    .Parse(reader["UserId"].ToString());
+                                    .Parse(reader["ID"].ToString());
                             }
                             MessageBox.Show("Ваші дані додано успішно!");
                             reader.Close();
