@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace TeamProject.Entities
 {
     [Table("tblUsers")]
-    class User
+    public class User
     {
         [Key]
         public int ID { get; set; }

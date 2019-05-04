@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
@@ -15,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TeamProject.Entities;
 
 namespace TeamProject
 {
@@ -123,48 +125,48 @@ namespace TeamProject
 
         private void AddUser()
         {
-            //User user = new User()
-            //{
-            //    Name = txtNewLogin.Text,
-            //    Password = txtNewPassword.Password,
-            //};
-            //try
-            //{
-            //    using (TransactionScope scope = new TransactionScope())
-            //    {
-            //        //string strCon = ConfigurationManager.AppSettings["DefaultConnection"];
-            //        using (SqlConnection con = new SqlConnection(@"Data Source = SLIMBOYFAT-ПК; Initial Catalog = LoginWPF; Integrated Security = True"))
-            //        {
-            //            con.Open();
-            //            SqlCommand command = new SqlCommand();
-            //            command.Connection = con;
-            //            var query = $"INSERT INTO [tblUserWPF] ([UserName], [Password]) VALUES('{user.Name}','{user.Password}')";
-            //            command.CommandText = query;
-            //            int userId = 0;
-            //            var count = command.ExecuteNonQuery();
-            //            if (count == 1)
-            //            {
-            //                query = "SELECT SCOPE_IDENTITY() AS UserId";
-            //                command.CommandText = query;
-            //                SqlDataReader reader = command.ExecuteReader();
-            //                if (reader.Read())
-            //                {
-            //                    userId = int
-            //                        .Parse(reader["UserId"].ToString());
-            //                }
-            //                MessageBox.Show("Ваші дані додано успішно!");
-            //                reader.Close();
-            //            }
-            //            else { throw new Exception("Проблема при додаванні користувача"); }
-            //        }
-            //        scope.Complete();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Помилка збереження даних", ex.Message);
-            //}
-            //this.Close();
+            User user = new User()
+            {
+                FirstName = txtNewLogin.Text,
+                Password = txtNewPassword.Password,
+            };
+            try
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    string strCon = ConfigurationManager.AppSettings["DefaultConnection"];
+                    using (SqlConnection con = new SqlConnection(@"Data Source = SLIMBOYFAT-ПК; Initial Catalog = LoginWPF; Integrated Security = True"))
+                    {
+                        con.Open();
+                        SqlCommand command = new SqlCommand();
+                        command.Connection = con;
+                        var query = $"INSERT INTO [tblUserWPF] ([UserName], [Password]) VALUES('{user.FirstName}','{user.Password}')";
+                        command.CommandText = query;
+                        int userId = 0;
+                        var count = command.ExecuteNonQuery();
+                        if (count == 1)
+                        {
+                            query = "SELECT SCOPE_IDENTITY() AS UserId";
+                            command.CommandText = query;
+                            SqlDataReader reader = command.ExecuteReader();
+                            if (reader.Read())
+                            {
+                                userId = int
+                                    .Parse(reader["UserId"].ToString());
+                            }
+                            MessageBox.Show("Ваші дані додано успішно!");
+                            reader.Close();
+                        }
+                        else { throw new Exception("Проблема при додаванні користувача"); }
+                    }
+                    scope.Complete();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Помилка збереження даних", ex.Message);
+            }
+            this.Close();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
