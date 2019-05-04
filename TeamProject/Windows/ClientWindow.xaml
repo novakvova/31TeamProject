@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="ClientWindow" Height="450" Width="400">
     <Grid>
-        
+        <Label x:Name="lblUser" Width="200" Height="40" VerticalAlignment="Top"/>
+        <TabControl x:Name="Tabs">
+            <TabItem x:Name="dataTab">
+                
+            </TabItem>
+            <TabItem x:Name="userTab">
+                
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
