@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TeamProject.Entities
 {
-    class EFContext : DbContext
+    public class EFContext : DbContext
     {
         public EFContext() : base("DefaultConnection")
         { }
