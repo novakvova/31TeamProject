@@ -12,5 +12,8 @@ namespace TeamProject.Entities
         public EFContext() : base("DefaultConnection")
         { }
         public DbSet<User> Users { get; set; }
+        public DbSet<Car> Autos { get; set; }
+
+
     }
 }

@@ -74,6 +74,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Entities\Car.cs" />
     <Compile Include="Entities\EFContext.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="LoginWindow.xaml.cs">
@@ -88,6 +89,10 @@
     <Compile Include="Migrations\201905040829583_Add tblUsers.cs" />
     <Compile Include="Migrations\201905040829583_Add tblUsers.Designer.cs">
       <DependentUpon>201905040829583_Add tblUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905040949295_Add tbl Auto.cs" />
+    <Compile Include="Migrations\201905040949295_Add tbl Auto.Designer.cs">
+      <DependentUpon>201905040949295_Add tbl Auto.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -105,6 +110,9 @@
     </Compile>
     <EmbeddedResource Include="Migrations\201905040829583_Add tblUsers.resx">
       <DependentUpon>201905040829583_Add tblUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905040949295_Add tbl Auto.resx">
+      <DependentUpon>201905040949295_Add tbl Auto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
