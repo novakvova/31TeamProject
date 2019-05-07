@@ -14,9 +14,14 @@
     <Grid>
         <TabControl x:Name="Tabs">
             <TabItem x:Name="baseTab">
-                <DataGrid x:Name="dgUsers" VerticalAlignment="Stretch" SelectionChanged="SelectionChanged_Item">
-                    
-                </DataGrid>
+                <StackPanel>
+                    <DataGrid x:Name="dgUsers" VerticalAlignment="Stretch" SelectionChanged="SelectionChanged_Item">
+
+                    </DataGrid>
+                    <DataGrid x:Name="dgCars" VerticalAlignment="Stretch">
+
+                    </DataGrid>
+                </StackPanel>
             </TabItem>
             <TabItem x:Name="dataTab">
                 
