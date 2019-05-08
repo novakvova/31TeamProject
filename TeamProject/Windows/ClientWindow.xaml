@@ -26,12 +26,9 @@
         <TabControl x:Name="Tabs">
             <TabItem x:Name="baseTab">
                 <StackPanel>
-                    <DataGrid x:Name="dgUsers" VerticalAlignment="Stretch" SelectionChanged="SelectionChanged_Item">
-
-                    </DataGrid>
-                    <DataGrid x:Name="dgCars" VerticalAlignment="Stretch">
-
-                    </DataGrid>
+                    <DataGrid x:Name="dgUsers" VerticalAlignment="Stretch"
+                              SelectionChanged="SelectionChanged_Item"/>
+                    <DataGrid x:Name="dgCars" VerticalAlignment="Stretch"/>
                 </StackPanel>
             </TabItem>
             <TabItem x:Name="History">
@@ -44,9 +41,8 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
-                            <DataGrid x:Name="dgCarsUser">
-                                
-                            </DataGrid>
+                            <DataGrid x:Name="dgCarsUser"/>
+                            
                             <!--<Label x:Name="lblUserFName" Content="FirstName:"/>
                             <TextBox x:Name="txtUserFName"/>-->
                             <!--<Label x:Name="lblUserLName" Content="LastName:"/>

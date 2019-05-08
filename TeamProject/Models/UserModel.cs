@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TeamProject.Entities;
 
 namespace TeamProject.Models
 {
@@ -40,6 +41,7 @@ namespace TeamProject.Models
         }
         public string Email { get; set; }
         public string Password { get; set; }
+        public string Status { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -50,5 +52,17 @@ namespace TeamProject.Models
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
         }
+
+        //public static implicit operator User(UserModel um)
+        //{
+        //    return new User()
+        //    {
+        //        ID=um.ID,
+        //        FirstName=um.FirstName,
+        //        LastName=um.LastName,
+        //        Email=um.Email,
+        //        Password=um.Password
+        //    };
+        //}
     }
 }

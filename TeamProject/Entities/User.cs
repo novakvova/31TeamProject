@@ -21,5 +21,6 @@ namespace TeamProject.Entities
         public string Email { get; set; }
         [Required, StringLength(maximumLength: 255)]
         public string Password { get; set; }
+        public string Status { get; set; }
     }
 }
