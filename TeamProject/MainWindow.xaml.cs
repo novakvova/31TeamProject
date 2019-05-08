@@ -36,5 +36,10 @@ namespace TeamProject
             SignUp dlg = new SignUp();
             dlg.ShowDialog();
         }
+
+        private void wrt_Click(object sender, RoutedEventArgs e)
+        {
+            Excl.WriteToExcel();
+        }
     }
 }
