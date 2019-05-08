@@ -26,14 +26,18 @@ namespace TeamProject.Windows
         public string _conStr = "Data Source=karaka123.mssql.somee.com;User ID=gmirakivan_SQLLogin_1;Password=8b1m2f1gnt";
         private EFContext _context;
         private ObservableCollection<UserModel> usersList;
+        private List<CarModel> carsList;
         public ClientWindow()
         {
             InitializeComponent();
             _context = new EFContext();
 
             usersList = new ObservableCollection<UserModel>();
-            usersList.Add(new UserModel() { ID = 1, FirstName = "q", LastName = "w", Email = "q@q.com" });
-            usersList.Add(new UserModel() { ID = 1, FirstName = "a", LastName = "s", Email = "a@a.com" });
+            usersList.Add(new UserModel() { ID = 1, FirstName = "q", LastName = "w", Email = "q@q.com", Password = "1234" });
+            usersList.Add(new UserModel() { ID = 2, FirstName = "a", LastName = "s", Email = "a@a.com" });
+            carsList = new List<CarModel>();
+            carsList.Add(new CarModel() { ID = 1, Brand = "audi", GraduationYear = "1234", VIN = "4321", StateNumber = "1234" });
+            carsList.Add(new CarModel() { ID = 2, Brand = "bmw", GraduationYear = "4567", VIN = "7654", StateNumber = "4567" });
 
             DB_Load();
         }
@@ -71,16 +75,23 @@ namespace TeamProject.Windows
             }
             
             dgUsers.ItemsSource = usersList;
+            dgCars.ItemsSource = carsList;
         }
 
         private void SelectionChanged_Item(object sender, SelectionChangedEventArgs e)
         {
             //MessageBox.Show("ok");
-            Settings.Focus();
-            lblUserTitle.Content = (dgUsers.SelectedItem as UserModel).FirstName + " " + (dgUsers.SelectedItem as UserModel).LastName;
-            txtUserFName.Text = (dgUsers.SelectedItem as UserModel).FirstName;
-            txtUserLName.Text = (dgUsers.SelectedItem as UserModel).LastName;
-            txtUserEmail.Text = (dgUsers.SelectedItem as UserModel).Email;
+            #region Settings.Focus()
+            //Settings.Focus();
+            //lblUserSetTitle.Content = (dgUsers.SelectedItem as UserModel).FirstName + " " + (dgUsers.SelectedItem as UserModel).LastName;
+            //txtUserFName.Text = (dgUsers.SelectedItem as UserModel).FirstName;
+            //txtUserLName.Text = (dgUsers.SelectedItem as UserModel).LastName;
+            //txtUserEmail.Text = (dgUsers.SelectedItem as UserModel).Email;
+            //txtUserPass.Password = (dgUsers.SelectedItem as UserModel).Password;
+            #endregion
+            History.Focus();
+            lblUserHistTitle.Content = (dgUsers.SelectedItem as UserModel).FirstName + " " + (dgUsers.SelectedItem as UserModel).LastName;
+
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
