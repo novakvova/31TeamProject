@@ -13,5 +13,6 @@ namespace TeamProject.Models
         public string GraduationYear { get; set; }
         public string VIN { get; set; }
         public string StateNumber { get; set; }
+        public int ClientID { get; set; }
     }
 }
