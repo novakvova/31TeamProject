@@ -31,10 +31,15 @@
                     <DataGrid x:Name="dgCars" VerticalAlignment="Stretch"/>
                 </StackPanel>
             </TabItem>
-            <TabItem x:Name="History">
+            <TabItem x:Name="Registration">
                 <StackPanel>
-                    <Label x:Name="lblUserHistTitle" Content="userName"
-                       HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblUserHistTitle" Content="userName" Width="300"
+                               HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                        <Button x:Name="btnAddCar" Content="Add car" Height="20" Width="60" Click="BtnAddCar_Click"
+                                />
+                    </StackPanel>
+                    
                     <Grid Height="120">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -42,7 +47,7 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
                             <DataGrid x:Name="dgCarsUser"/>
-                            
+
                             <!--<Label x:Name="lblUserFName" Content="FirstName:"/>
                             <TextBox x:Name="txtUserFName"/>-->
                             <!--<Label x:Name="lblUserLName" Content="LastName:"/>

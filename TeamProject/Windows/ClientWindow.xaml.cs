@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -25,19 +26,51 @@ namespace TeamProject.Windows
     {
         ///public string _conStr = "Data Source=karaka123.mssql.somee.com;User ID=gmirakivan_SQLLogin_1;Password=8b1m2f1gnt";
         private EFContext _context;
-        private ObservableCollection<UserModel> usersList;
-        private List<CarModel> carsList, clientsCL, brokersBL;
+        private ObservableCollection<UserModel> _usersList;
+        private List<CarModel> _carsList, _clientsCL, _brokersBL;
         public ClientWindow()
         {
             InitializeComponent();
             _context = new EFContext();
 
-            usersList = new ObservableCollection<UserModel>();
-            usersList.Add(new UserModel() { ID = 1, FirstName = "q", LastName = "w", Email = "q@q.com", Password = "1234", Status = "client" });
-            usersList.Add(new UserModel() { ID = 2, FirstName = "a", LastName = "s", Email = "a@a.com", Status = "broker" });
-            carsList = new List<CarModel>();
-            carsList.Add(new CarModel() { ID = 1, Brand = "audi", GraduationYear = "1234", VIN = "4321", StateNumber = "1234", ClientID = 1 });
-            carsList.Add(new CarModel() { ID = 2, Brand = "bmw", GraduationYear = "4567", VIN = "7654", StateNumber = "4567", ClientID = 1 });
+            _usersList = new ObservableCollection<UserModel>();
+            _usersList.Add(new UserModel()
+            {
+                ID = 1,
+                FirstName = "q",
+                LastName = "w",
+                Email = "q@q.com",
+                Password = "1234",
+                Status = "client"
+            });
+            _usersList.Add(new UserModel()
+            {
+                ID = 2,
+                FirstName = "a",
+                LastName = "s",
+                Email = "a@a.com",
+                Status = "broker"
+            });
+            _carsList = new List<CarModel>();
+            _carsList.Add(new CarModel()
+            {
+                ID = 1,
+                Brand = "audi",
+                GraduationYear = "1234",
+                VIN = "4321",
+                StateNumber = "1234",
+                ClientID = 1
+            });
+            _carsList.Add(new CarModel()
+            {
+                ID = 2,
+                Brand = "bmw",
+                GraduationYear = "4567",
+                VIN = "7654",
+                StateNumber = "4567",
+                ClientID = 1
+            });
+            
             //clientsCL = new List<CarModel>(
             //    carsList.Select(c => new CarModel()
             //    {
@@ -88,8 +121,8 @@ namespace TeamProject.Windows
                 MessageBox.Show(ex.Message);
             }
             
-            dgUsers.ItemsSource = usersList;
-            dgCars.ItemsSource = carsList;
+            dgUsers.ItemsSource = _usersList;
+            dgCars.ItemsSource = _carsList;
         }
 
         private void SelectionChanged_Item(object sender, SelectionChangedEventArgs e)
@@ -103,16 +136,30 @@ namespace TeamProject.Windows
             //txtUserEmail.Text = (dgUsers.SelectedItem as UserModel).Email;
             //txtUserPass.Password = (dgUsers.SelectedItem as UserModel).Password;
             #endregion
-            History.Focus();
+            
+            Registration.Focus();
             lblUserHistTitle.Content = (dgUsers.SelectedItem as UserModel).FirstName + " " + (dgUsers.SelectedItem as UserModel).LastName;
-            clientsCL = new List<CarModel>(
-                carsList.Select(c => new CarModel()
+            _clientsCL = new List<CarModel>(
+                _carsList.Select(c => new CarModel()
                 {
+                    ID = c.ID,
                     Brand = c.Brand,
-                    StateNumber = c.StateNumber
-                }).Where(c => c.ClientID == (dgUsers.SelectedItem as UserModel).ID)
-                .ToList());
-            dgCarsUser.ItemsSource = clientsCL;
+                    GraduationYear = c.GraduationYear,
+                    VIN = c.VIN,
+                    StateNumber = c.StateNumber,
+                    ClientID = c.ClientID
+                }).Where(c => c.ClientID == (dgUsers.SelectedItem as UserModel).ID));
+            dgCarsUser.ItemsSource = _clientsCL.Select(i => new CUModel()
+            {
+                Brand = i.Brand,
+                StateNumber = i.StateNumber
+            });
+
+        }
+
+        private void BtnAddCar_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("add car");
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
