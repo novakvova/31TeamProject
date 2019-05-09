@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeamProject.Windows"
         mc:Ignorable="d"
-        Title="AddCarWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid>
-        
-    </Grid>
+        Title="AddCarWindow" Height="500" Width="400" FontSize="14" Background="YellowGreen"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+    </Window.Resources>
+    <Border Background="Black" CornerRadius="20" Margin="20">
+        <StackPanel Margin="20">
+            <Label x:Name="lblCarBrand" Content="Enter brand:"/>
+            <TextBox x:Name="txtCarBrand"/>
+            <Label x:Name="lblCarYear" Content="Enter graduationYear:"/>
+            <TextBox x:Name="txtCarYear"/>
+            <Label x:Name="lblCarVin" Content="Enter VIN:"/>
+            <TextBox x:Name="txtCarVin"/>
+            <Label x:Name="lblCrNum" Content="Enter stateNumber"/>
+            <TextBox Name="txtCarNum"/>
+            <Button x:Name="btnCarSubmit" Content="Submit" Margin="60 40"
+                    Background="White" Foreground="Black" FontSize="18"
+                    Click="BtnCarSubmit_Click"/>
+        </StackPanel>
+    </Border>
 </Window>

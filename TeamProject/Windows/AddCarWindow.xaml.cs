@@ -23,5 +23,11 @@ namespace TeamProject.Windows
         {
             InitializeComponent();
         }
+
+        private void BtnCarSubmit_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("car submit");
+            this.Close();
+        }
     }
 }
