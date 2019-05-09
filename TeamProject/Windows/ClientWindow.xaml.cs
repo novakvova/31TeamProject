@@ -162,6 +162,11 @@ namespace TeamProject.Windows
             MessageBox.Show("add car");
         }
 
+        private void BtnSetBrok_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("broker");
+        }
+
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("save");

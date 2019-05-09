@@ -34,30 +34,35 @@
             <TabItem x:Name="Registration">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label x:Name="lblUserHistTitle" Content="userName" Width="300"
+                        <Label x:Name="lblUserHistTitle" Content="userName" Width="250"
                                HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold"/>
-                        <Button x:Name="btnAddCar" Content="Add car" Height="20" Width="60" Click="BtnAddCar_Click"
+                        <Button x:Name="btnAddCar" Content="Add car" Height="20" Width="60"
+                                Click="BtnAddCar_Click"/>
+                        <Button x:Name="btnSetBrok" Content="Broker" Height="20" Width="60" Margin="5"
+                                Click="BtnSetBrok_Click"
                                 />
                     </StackPanel>
-                    
-                    <Grid Height="120">
+                    <Grid Height="160">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
+                            <Label x:Name="lblCarsUser" Content="Cars:"/>
                             <DataGrid x:Name="dgCarsUser"/>
 
-                            <!--<Label x:Name="lblUserFName" Content="FirstName:"/>
-                            <TextBox x:Name="txtUserFName"/>-->
+                            <!--<TextBox x:Name="txtUserFName"/>-->
                             <!--<Label x:Name="lblUserLName" Content="LastName:"/>
                             <TextBox x:Name="txtUserLName"/>-->
                         </StackPanel>
                         <StackPanel Grid.Column="1">
-                            <!--<Label x:Name="lblUserEmail" Content="Email:"/>
-                            <TextBox x:Name="txtUserEmail"/>
-                            <Label x:Name="lblUserPass" Content="Password:"/>
-                            <PasswordBox x:Name="txtUserPass" FontSize="14" HorizontalContentAlignment="Center"
+                            <Label x:Name="lblCarYear" Content="Year:"/>
+                            <TextBox x:Name="txtCarYear"/>
+                            <Label x:Name="lblCarVin" Content="VIN:"/>
+                            <TextBox x:Name="txtCarVin"/>
+                            <Label x:Name="lblCarNum" Content="Number:"/>
+                            <TextBox x:Name="txtCarNum"/>
+                            <!--<PasswordBox x:Name="txtUserPass" FontSize="14" HorizontalContentAlignment="Center"
                                          Width="150"/>-->
                         </StackPanel>
                     </Grid>
