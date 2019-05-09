@@ -157,6 +157,12 @@ namespace TeamProject.Windows
 
         }
 
+        private void SelectionChanged_Car(object sender, SelectionChangedEventArgs e)
+        {
+            txtCarYear.Text = _clientsCL.Where(i => i.StateNumber == (dgCarsUser.SelectedItem as CUModel).StateNumber).First().GraduationYear;
+            txtCarVin.Text = _clientsCL.Where(i => i.StateNumber == (dgCarsUser.SelectedItem as CUModel).StateNumber).First().VIN;
+        }
+
         private void BtnAddCar_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("add car");

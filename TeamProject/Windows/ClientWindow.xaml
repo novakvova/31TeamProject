@@ -42,14 +42,14 @@
                                 Click="BtnSetBrok_Click"
                                 />
                     </StackPanel>
-                    <Grid Height="160">
+                    <Grid Height="120">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
                             <Label x:Name="lblCarsUser" Content="Cars:"/>
-                            <DataGrid x:Name="dgCarsUser"/>
+                            <DataGrid x:Name="dgCarsUser" SelectionChanged="SelectionChanged_Car"/>
 
                             <!--<TextBox x:Name="txtUserFName"/>-->
                             <!--<Label x:Name="lblUserLName" Content="LastName:"/>
@@ -60,8 +60,8 @@
                             <TextBox x:Name="txtCarYear"/>
                             <Label x:Name="lblCarVin" Content="VIN:"/>
                             <TextBox x:Name="txtCarVin"/>
-                            <Label x:Name="lblCarNum" Content="Number:"/>
-                            <TextBox x:Name="txtCarNum"/>
+                            <!--<Label x:Name="lblCarNum" Content="Number:"/>
+                            <TextBox x:Name="txtCarNum"/>-->
                             <!--<PasswordBox x:Name="txtUserPass" FontSize="14" HorizontalContentAlignment="Center"
                                          Width="150"/>-->
                         </StackPanel>
