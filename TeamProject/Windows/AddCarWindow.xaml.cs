@@ -19,14 +19,32 @@ namespace TeamProject.Windows
     /// </summary>
     public partial class AddCarWindow : Window
     {
+        public int CarID { get; set; }
+        public string Brand { get; set; }
+        public string GradYear { get; set; }
+        public string VIN { get; set; }
+        public string StNum { get; set; }
+
         public AddCarWindow()
         {
             InitializeComponent();
+
         }
 
         private void BtnCarSubmit_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("car submit");
+            while (string.IsNullOrEmpty(txtCarBrand.Text))
+            {
+                MessageBox.Show("!!!");
+                txtCarBrand.Width = 290;
+                lblCBWarn.Content = "!";
+            }
+            this.Close();
+        }
+
+        private void BtnCarCancel_Click(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
     }
