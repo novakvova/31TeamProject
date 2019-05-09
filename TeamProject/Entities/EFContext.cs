@@ -13,7 +13,7 @@ namespace TeamProject.Entities
         { }
         public DbSet<User> Users { get; set; }
         public DbSet<Car> Autos { get; set; }
-
+        public DbSet<Broker> Brokers { get; set; }
 
     }
 }

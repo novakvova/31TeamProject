@@ -89,7 +89,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Entities\Broker.cs" />
     <Compile Include="Excl.cs" />
+    <Compile Include="Migrations\201905091924053_bs.cs" />
+    <Compile Include="Migrations\201905091924053_bs.Designer.cs">
+      <DependentUpon>201905091924053_bs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\CarModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Windows\ClientWindow.xaml.cs">
@@ -130,14 +135,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201905040829583_Add tblUsers.cs" />
-    <Compile Include="Migrations\201905040829583_Add tblUsers.Designer.cs">
-      <DependentUpon>201905040829583_Add tblUsers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905040949295_Add tbl Auto.cs" />
-    <Compile Include="Migrations\201905040949295_Add tbl Auto.Designer.cs">
-      <DependentUpon>201905040949295_Add tbl Auto.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -152,11 +149,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201905040829583_Add tblUsers.resx">
-      <DependentUpon>201905040829583_Add tblUsers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905040949295_Add tbl Auto.resx">
-      <DependentUpon>201905040949295_Add tbl Auto.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905091924053_bs.resx">
+      <DependentUpon>201905091924053_bs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

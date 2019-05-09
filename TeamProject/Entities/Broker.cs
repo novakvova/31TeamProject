@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace TeamProject.Entities
 {
-    [Table("tblUsers")]
-    public class User
+    [Table("tblBrokers")]
+    public class Broker
     {
         [Key]
         public int ID { get; set; }
@@ -23,7 +23,7 @@ namespace TeamProject.Entities
         public string Password { get; set; }
 
         public ICollection<Car> Cars { get; set; }
-        public User()
+        public Broker()
         {
             Cars = new List<Car>();
         }
