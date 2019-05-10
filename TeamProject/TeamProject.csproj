@@ -95,6 +95,7 @@
     <Compile Include="Migrations\201905091924053_bs.Designer.cs">
       <DependentUpon>201905091924053_bs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\BrokerModel.cs" />
     <Compile Include="Models\CarModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Windows\ClientWindow.xaml.cs">
