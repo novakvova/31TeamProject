@@ -5,10 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeamProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="372,298,0,0" VerticalAlignment="Top" Width="75" Click="BtnLogin_Click"/>
-        <Button x:Name="btnSignup" Content="Sign up" HorizontalAlignment="Left" Margin="372,343,0,0" VerticalAlignment="Top" Width="75" Click="BtnSignup_Click"/>
-        <Button x:Name="wrt" Content="To Excel" Click="wrt_Click" HorizontalAlignment="Left" Margin="372,225,0,0" VerticalAlignment="Top" Width="75"/>
-    </Grid>
+        Title="MainWindow" Height="300" Width="400" FontSize="14" Background="YellowGreen"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Border Background="Black" CornerRadius="20" Margin="20">
+        <StackPanel Margin="20">
+            <Label x:Name="lblNameProj" Content="Обтаможся по-бистрому"/>
+            <!--<TextBox x:Name="txtCarBrand" SelectionChanged="SelectionChanged_Text"/>
+            <Label x:Name="lblCarYear" Content="Enter graduationYear:"/>
+            <TextBox x:Name="txtCarYear" SelectionChanged="SelectionChanged_Text"/>
+            <Label x:Name="lblCarVin" Content="Enter VIN:"/>
+            <TextBox x:Name="txtCarVin" SelectionChanged="SelectionChanged_Text"/>
+            <Label x:Name="lblCrNum" Content="Enter stateNumber"/>
+            <TextBox Name="txtCarNum" SelectionChanged="SelectionChanged_Text"/>-->
+            <StackPanel Orientation="Horizontal" Width="170" Margin="0,40,0,40" >
+                <!--<Button x:Name="btnCarSubmit" Content="Submit" Width="80" IsEnabled="False"
+                    Background="White" Foreground="Black" FontSize="18" Margin="0,0,10,0"
+                    Click="BtnCarSubmit_Click"/>
+                <Button x:Name="btnCarCancel" Content="Cancel" Width="80"
+                    Background="White" Foreground="Black" FontSize="18"
+                    Click="BtnCarCancel_Click"/>-->
+                <Button x:Name="btnLogin" Content="Login" Width="80"
+                    Background="White" Foreground="Black" FontSize="18" Margin="0,0,10,0"
+                        Click="BtnLogin_Click"/>
+                <Button x:Name="btnSignup" Content="Sign up" Width="80"
+                    Background="White" Foreground="Black" FontSize="18"
+                        Click="BtnSignup_Click"/>
+            </StackPanel>
+            <Button x:Name="wrt" Content="To Excel" Click="wrt_Click" Width="80"
+                    Background="White" Foreground="Black" FontSize="18"/>
+        </StackPanel>
+    </Border>
 </Window>

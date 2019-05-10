@@ -38,7 +38,6 @@
                     Background="White" Foreground="Black" FontSize="18"
                     Click="BtnCarCancel_Click"/>
             </StackPanel>
-            
         </StackPanel>
     </Border>
 </Window>
