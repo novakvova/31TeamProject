@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +25,47 @@ namespace TeamProject.Windows
     /// </summary>
     public partial class ClientWindow : Window
     {
+        #region localization
+
+        private void ChangeLocalizationAndUpdateUA(object sender, RoutedEventArgs e)
+        {
+            UpdateLocalizationUA();
+            UpdateUI();
+        }
+
+        private void UpdateLocalizationUA()
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("uk-UA");
+        }
+
+        private void ChangeLocalizationAndUpdateENG(object sender, RoutedEventArgs e)
+        {
+            UpdateLocalizationENG();
+            UpdateUI();
+        }
+
+        private void UpdateLocalizationENG()
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-GB");
+        }
+
+        private void ChangeLocalizationAndUpdateRU(object sender, RoutedEventArgs e)
+        {
+            UpdateLocalizationRU();
+            UpdateUI();
+        }
+
+        private void UpdateLocalizationRU()
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("ru-RU");
+        }
+
+        private void UpdateUI()
+        {
+            //Tabs.
+        }
+
+        #endregion
         ///public string _conStr = "Data Source=karaka123.mssql.somee.com;User ID=gmirakivan_SQLLogin_1;Password=8b1m2f1gnt";
         private EFContext _context;
         private ObservableCollection<UserModel> usersList;
@@ -87,9 +130,13 @@ namespace TeamProject.Windows
             {
                 MessageBox.Show(ex.Message);
             }
-            
             dgUsers.ItemsSource = usersList;
             dgCars.ItemsSource = carsList;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateUI();
         }
 
         private void SelectionChanged_Item(object sender, SelectionChangedEventArgs e)

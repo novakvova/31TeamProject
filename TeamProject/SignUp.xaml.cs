@@ -30,6 +30,8 @@ namespace TeamProject
             InitializeComponent();
         }
 
+        #region localization
+
         private void ChangeLocalizationAndUpdateUA(object sender, RoutedEventArgs e)
         {
             UpdateLocalizationUA();
@@ -65,14 +67,19 @@ namespace TeamProject
 
         private void UpdateUI()
         {
-            //btnEng.Content = Strings.Eng;
-            //btnUkr.Content = Strings.Ukr;
-            //btnRus.Content = Strings.Rus;
-            //btnNewSubmit.Content = Strings.Submit;
-            //lblNewLogin.Content = Strings.NewLogin;
-            //lblNewPassword.Content = Strings.NewPassword;
-            //lblNewPasswordCopy.Content = Strings.NewPasswordCopy;
+            btnEng.Content = Strings.Strings.EngLang;
+            btnRus.Content = Strings.Strings.RusLang;
+            btnUkr.Content = Strings.Strings.UkrLang;
+            this.Title = Strings.Strings.SignUpWindowTitle;
+            lblNewFirstName.Content = Strings.Strings.FirstName;
+            lblNewLastName.Content = Strings.Strings.LastName;
+            lblNewLogin.Content = Strings.Strings.Email;
+            lblNewPassword.Content = Strings.Strings.Password;
+            lblNewPasswordCopy.Content = Strings.Strings.RepeatPassword;
+            btnNewSubmit.Content = Strings.Strings.CreateAccount;
         }
+
+        #endregion
 
         private void btnNewSubmit_Click(object sender, RoutedEventArgs e)
         {
@@ -99,11 +106,11 @@ namespace TeamProject
                             }
 
                             if (!en)
-                                MessageBox.Show("Пароль може бути лише латиницею!");
+                                MessageBox.Show(Strings.Strings.OnlyLatinWarning/*"Пароль може бути лише латиницею!"*/);
                             else if (!symbol)
-                                MessageBox.Show("Додайте один із таких символів: _ - !");
+                                MessageBox.Show(Strings.Strings.MissingCharsWarning/*"Додайте один із таких символів: _ - !"*/);
                             else if (!number)
-                                MessageBox.Show("Додайте хоча б одну цифру");
+                                MessageBox.Show(Strings.Strings.MissingDigitsWarning/*"Додайте хоча б одну цифру"*/);
                             if (en && symbol && number) // перевірка на повну відповідність
                                 if (en)
                                 {
@@ -111,16 +118,16 @@ namespace TeamProject
                                     {
                                         AddUser();
                                     }
-                                    else MessageBox.Show("Паролі не співпадають");
+                                    else MessageBox.Show(Strings.Strings.PasswordsMatchWarning/*"Паролі не співпадають"*/);
                                 }
                         }
-                        else MessageBox.Show("Пароль надто короткий, потрібно мінімум 6 символів");
+                        else MessageBox.Show(Strings.Strings.PasswordLengthWarning/*"Пароль надто короткий, потрібно мінімум 6 символів"*/);
                     }
-                    else MessageBox.Show("Повторіть пароль");
+                    else MessageBox.Show(Strings.Strings.RepeatPasswordWarning/*"Повторіть пароль"*/);
                 }
-                else MessageBox.Show("Вкажіть пароль");
+                else MessageBox.Show(Strings.Strings.MissingPasswordWarning/*"Вкажіть пароль"*/);
             }
-            else MessageBox.Show("Вкажіть логін");
+            else MessageBox.Show(Strings.Strings.MissingLoginWarning/*$"Вкажіть логін"*/);
         }
 
         private void AddUser()
@@ -157,17 +164,17 @@ namespace TeamProject
                                 userId = int
                                     .Parse(reader["ID"].ToString());
                             }
-                            MessageBox.Show("Ваші дані додано успішно!");
+                            MessageBox.Show(Strings.Strings.AddingDataSuccessMessage/*"Ваші дані додано успішно!"*/);
                             reader.Close();
                         }
-                        else { throw new Exception("Проблема при додаванні користувача"); }
+                        else { throw new Exception(Strings.Strings.AddingUserError/*"Проблема при додаванні користувача"*/); }
                     }
                     scope.Complete();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Помилка збереження даних", ex.Message);
+                MessageBox.Show(Strings.Strings.SavingDataError/*"Помилка збереження даних"*/, ex.Message);
             }
             this.Close();
         }
