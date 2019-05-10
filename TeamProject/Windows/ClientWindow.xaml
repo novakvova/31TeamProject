@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeamProject.Windows"
         mc:Ignorable="d"
-        Title="Cabinet" Height="250" Width="400" WindowStartupLocation="CenterScreen">
+        Title="Cabinet" Height="250" Width="400" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" >
     <Window.Resources>
         <Style x:Name="stlTab" TargetType="TabItem">
             <Setter x:Name="hdr" Property="Header" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Name}"/>
@@ -24,13 +24,13 @@
             </Style>
         </Grid.Resources>
         <TabControl x:Name="Tabs">
-            <TabItem x:Name="baseTab">
+            <!--<TabItem x:Name="baseTab">
                 <StackPanel>
                     <DataGrid x:Name="dgUsers" VerticalAlignment="Stretch"
                               SelectionChanged="SelectionChanged_Item"/>
                     <DataGrid x:Name="dgCars" VerticalAlignment="Stretch"/>
                 </StackPanel>
-            </TabItem>
+            </TabItem>-->
             <TabItem x:Name="Registration">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">

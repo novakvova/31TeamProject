@@ -138,7 +138,7 @@ namespace TeamProject
                 {
                     //string strCon = ConfigurationManager.AppSettings["DefaultConnection"];
                     //using (SqlConnection con = new SqlConnection(@"Data Source = SLIMBOYFAT-ПК; Initial Catalog = LoginWPF; Integrated Security = True"))
-                    using (SqlConnection con = new SqlConnection(@"Data Source=karaka123.mssql.somee.com; Initial Catalog = karaka123; User ID=gmirakivan_SQLLogin_1; Password=8b1m2f1gnt"))
+                    using (SqlConnection con = new SqlConnection(@"workstation id=teamprj.mssql.somee.com;packet size=4096;user id=Sneiksus_SQLLogin_1;pwd=4p32j6ed1i;data source=teamprj.mssql.somee.com;persist security info=False;initial catalog=teamprj"))
                     {
                         con.Open();
                         SqlCommand command = new SqlCommand();

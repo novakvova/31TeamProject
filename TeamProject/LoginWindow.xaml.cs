@@ -45,6 +45,8 @@ namespace TeamProject
                 if (count == 1)
                 {
                     ClientWindow clWind = new ClientWindow();
+                    MessageBox.Show("!!!");
+                    clWind.Email = txtUsername.Text;
                     clWind.ShowDialog();
                     this.Close();
                 }

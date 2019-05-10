@@ -41,7 +41,7 @@ namespace TeamProject.Models
         }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string Status { get; set; }
+        //public string Status { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
