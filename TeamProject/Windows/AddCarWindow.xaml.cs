@@ -28,24 +28,37 @@ namespace TeamProject.Windows
         public AddCarWindow()
         {
             InitializeComponent();
-
         }
 
         private void BtnCarSubmit_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("car submit");
-            while (string.IsNullOrEmpty(txtCarBrand.Text))
-            {
-                MessageBox.Show("!!!");
-                txtCarBrand.Width = 290;
-                lblCBWarn.Content = "!";
-            }
+            Brand = txtCarBrand.Text;
+            GradYear = txtCarYear.Text;
+            VIN = txtCarVin.Text;
+            StNum = txtCarNum.Text;
             this.Close();
         }
 
         private void BtnCarCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void SelectionChanged_Text(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtCarBrand.Text))
+            {
+                if (!string.IsNullOrEmpty(txtCarYear.Text))
+                {
+                    if (!string.IsNullOrEmpty(txtCarVin.Text))
+                    {
+                        if (!string.IsNullOrEmpty(txtCarNum.Text))
+                        {
+                            btnCarSubmit.IsEnabled = true;
+                        }
+                    }
+                }
+            }
         }
     }
 }

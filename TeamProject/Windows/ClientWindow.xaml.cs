@@ -165,7 +165,6 @@ namespace TeamProject.Windows
 
         private void BtnAddCar_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("add car");
             AddCarWindow adwDialog = new AddCarWindow();
             adwDialog.ShowDialog();
         }

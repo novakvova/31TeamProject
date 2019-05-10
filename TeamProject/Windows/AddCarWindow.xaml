@@ -17,32 +17,21 @@
             <Setter Property="Background" Value="White"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontSize" Value="18"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
         </Style>
     </Window.Resources>
     <Border Background="Black" CornerRadius="20" Margin="20">
         <StackPanel Margin="20">
             <Label x:Name="lblCarBrand" Content="Enter brand:"/>
-            <StackPanel Orientation="Horizontal" Width="312">
-                <TextBox x:Name="txtCarBrand" Width="312"/>
-                <Label x:Name="lblCBWarn" Foreground="Red" FontSize="18" FontWeight="Bold"/>
-            </StackPanel>
+            <TextBox x:Name="txtCarBrand" SelectionChanged="SelectionChanged_Text"/>
             <Label x:Name="lblCarYear" Content="Enter graduationYear:"/>
-            <StackPanel>
-                <TextBox x:Name="txtCarYear"/>
-                <Label x:Name="lblCYWarn" Foreground="Red" FontSize="18" FontWeight="Bold"/>
-            </StackPanel>
+            <TextBox x:Name="txtCarYear" SelectionChanged="SelectionChanged_Text"/>
             <Label x:Name="lblCarVin" Content="Enter VIN:"/>
-            <StackPanel>
-                <TextBox x:Name="txtCarVin"/>
-                <Label x:Name="lblCVWarn" Foreground="Red" FontSize="18" FontWeight="Bold"/>
-            </StackPanel>
+            <TextBox x:Name="txtCarVin" SelectionChanged="SelectionChanged_Text"/>
             <Label x:Name="lblCrNum" Content="Enter stateNumber"/>
-            <StackPanel>
-                <TextBox Name="txtCarNum"/>
-                <Label x:Name="lblCNWarn" Foreground="Red" FontSize="18" FontWeight="Bold"/>
-            </StackPanel>
+            <TextBox Name="txtCarNum" SelectionChanged="SelectionChanged_Text"/>
             <StackPanel Orientation="Horizontal" Width="170" Margin="0,40,0,40" >
-                <Button x:Name="btnCarSubmit" Content="Submit" Width="80"
+                <Button x:Name="btnCarSubmit" Content="Submit" Width="80" IsEnabled="False"
                     Background="White" Foreground="Black" FontSize="18" Margin="0,0,10,0"
                     Click="BtnCarSubmit_Click"/>
                 <Button x:Name="btnCarCancel" Content="Cancel" Width="80"
