@@ -62,7 +62,18 @@ namespace TeamProject.Windows
 
         private void UpdateUI()
         {
-            //Tabs.
+            baseTab.Header = Strings.Strings.BaseTab;
+            History.Header = Strings.Strings.HistoryTab;
+            Settings.Header = Strings.Strings.SettingsTab;
+            lblUserEmail.Content = Strings.Strings.Email;
+            lblUserFName.Content = Strings.Strings.FirstName;
+            lblUserLName.Content = Strings.Strings.LastName;
+            lblUserPass.Content = Strings.Strings.Password;
+            btnSave.Content = Strings.Strings.SaveChanges;
+            this.Title = Strings.Strings.CabinetTitle;
+            btnEng.Content = Strings.Strings.EngLang;
+            btnRus.Content = Strings.Strings.RusLang;
+            btnUkr.Content = Strings.Strings.UkrLang;
         }
 
         #endregion
