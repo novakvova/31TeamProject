@@ -7,13 +7,13 @@ namespace TeamProject.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddtblUsers : IMigrationMetadata
+    public sealed partial class bs : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddtblUsers));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(bs));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905040829583_Add tblUsers"; }
+            get { return "201905091924053_bs"; }
         }
         
         string IMigrationMetadata.Source

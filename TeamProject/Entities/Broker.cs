@@ -8,24 +8,24 @@ using System.Threading.Tasks;
 
 namespace TeamProject.Entities
 {
-    [Table("tblCars")]
-    public class Car
+    [Table("tblBrokers")]
+    public class Broker
     {
         [Key]
         public int ID { get; set; }
         [Required, StringLength(maximumLength: 255)]
-        public string Brand { get; set; }
+        public string FirstName { get; set; }
         [Required, StringLength(maximumLength: 255)]
-        public string GraduationYear { get; set; }
+        public string LastName { get; set; }
         [Required, StringLength(maximumLength: 255)]
-        public string VIN { get; set; }
+        public string Email { get; set; }
         [Required, StringLength(maximumLength: 255)]
-        public string StateNumber { get; set; }
+        public string Password { get; set; }
 
-        public int? BrokerId { get; set; }
-        public Broker Broker { get; set; }
-
-        public int? UserId { get; set; }
-        public Broker User { get; set; }
+        public ICollection<Car> Cars { get; set; }
+        public Broker()
+        {
+            Cars = new List<Car>();
+        }
     }
 }
