@@ -21,11 +21,11 @@ namespace TeamProject.Entities
         public string VIN { get; set; }
         [Required, StringLength(maximumLength: 255)]
         public string StateNumber { get; set; }
-        public int ClientID { get; set; }
-        //[ForeignKey("ClientID")]
-        //public User Client { get; set; }
-        //public int BrokerID { get; set; }
-        //[ForeignKey("BrokerID")]
-        //public User Broker { get; set; }
+
+        public int? BrokerId { get; set; }
+        public Broker Broker { get; set; }
+
+        public int? UserId { get; set; }
+        public Broker User { get; set; }
     }
 }
