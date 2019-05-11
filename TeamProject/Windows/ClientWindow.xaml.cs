@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -23,101 +24,135 @@ namespace TeamProject.Windows
     /// </summary>
     public partial class ClientWindow : Window
     {
-        ///public string _conStr = "Data Source=karaka123.mssql.somee.com;User ID=gmirakivan_SQLLogin_1;Password=8b1m2f1gnt";
+        public string Email { get; set; }
         private EFContext _context;
-        private ObservableCollection<UserModel> usersList;
-        private List<CarModel> carsList, clientsCL, brokersBL;
+        private User _tmp;
+        private ObservableCollection<UserModel> _usersList;
+        private List<CarModel> _carsList, _clientsCL;
+        private List<BrokModel> _brokList;
         public ClientWindow()
         {
             InitializeComponent();
             _context = new EFContext();
-
-            usersList = new ObservableCollection<UserModel>();
-            usersList.Add(new UserModel() { ID = 1, FirstName = "q", LastName = "w", Email = "q@q.com", Password = "1234", Status = "client" });
-            usersList.Add(new UserModel() { ID = 2, FirstName = "a", LastName = "s", Email = "a@a.com", Status = "broker" });
-            carsList = new List<CarModel>();
-            carsList.Add(new CarModel() { ID = 1, Brand = "audi", GraduationYear = "1234", VIN = "4321", StateNumber = "1234", ClientID = 1 });
-            carsList.Add(new CarModel() { ID = 2, Brand = "bmw", GraduationYear = "4567", VIN = "7654", StateNumber = "4567", ClientID = 1 });
-            //clientsCL = new List<CarModel>(
-            //    carsList.Select(c => new CarModel()
-            //    {
-            //        Brand = c.Brand,
-            //        StateNumber = c.StateNumber
-            //    }).Where(c => c.ClientID == 1).ToList());
-
-            DB_Load();
+            Email = TeamProject.LoginWindow.LogName;
+            _tmp = _context.Users.Where(u => u.Email == Email).First();
         }
 
         public void DB_Load()
         {
-            //usersList = new ObservableCollection<UserModel>(
-            //    _context.Users.Select(u => new UserModel()
-            //    {
-            //        UserID = u.UserID,
-            //        FirstName = u.FirstName,
-            //        LastName = u.LastName,
-            //        Email = u.Email,
-            //        Password = u.Password
-            //    }).ToList());
             try
             {
-                //using (SqlConnection con = new SqlConnection(_conStr))
-                //{
-                //    con.Open();
-                //    SqlCommand cmd = new SqlCommand("SELECT [Id],[FirstName]FROM[tblUsers]", con);
-                //    SqlDataReader rdr = cmd.ExecuteReader();
-                //    if (rdr.Read())
-                //    {
-                //        MessageBox.Show("ok");
-                //    }
-                //    con.Close();
-                //}
+                _usersList = new ObservableCollection<UserModel>(
+                    _context.Users.Select(u => new UserModel()
+                    {
+                        ID = u.ID,
+                        FirstName = u.FirstName,
+                        LastName = u.LastName,
+                        Email = u.Email,
+                        Password = u.Password
+                    }).ToList());
 
-                //usersList = new ObservableCollection<UserModel>(
-                //_context.Users.Select(u => new UserModel()
-                //{
-                //    ID = u.ID,
-                //    FirstName = u.FirstName,
-                //    LastName = u.LastName,
-                //    Email = u.Email,
-                //    Password = u.Password
-                //}).ToList());
+                _carsList = new List<CarModel>(
+                    _context.Autos.Select(c => new CarModel()
+                    {
+                        ID = c.ID,
+                        Brand = c.Brand,
+                        GraduationYear = c.GraduationYear,
+                        VIN = c.VIN,
+                        StateNumber = c.StateNumber,
+                        BrokerId = (int)c.BrokerId,
+                        UserId = (int)c.UserId
+                    }).ToList());
+
+                _brokList = new List<BrokModel>(
+                    _context.Brokers.Select(b => new BrokModel()
+                    {
+                        ID = b.ID,
+                        FirstName = b.FirstName,
+                        LastName = b.LastName,
+                        Email = b.Email,
+                        Password = b.Password
+                    }).ToList());
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
-            dgUsers.ItemsSource = usersList;
-            dgCars.ItemsSource = carsList;
         }
 
-        private void SelectionChanged_Item(object sender, SelectionChangedEventArgs e)
+        public void CU_Load()
         {
-            //MessageBox.Show("ok");
-            #region Settings.Focus()
-            //Settings.Focus();
-            //lblUserSetTitle.Content = (dgUsers.SelectedItem as UserModel).FirstName + " " + (dgUsers.SelectedItem as UserModel).LastName;
-            //txtUserFName.Text = (dgUsers.SelectedItem as UserModel).FirstName;
-            //txtUserLName.Text = (dgUsers.SelectedItem as UserModel).LastName;
-            //txtUserEmail.Text = (dgUsers.SelectedItem as UserModel).Email;
-            //txtUserPass.Password = (dgUsers.SelectedItem as UserModel).Password;
-            #endregion
-            History.Focus();
-            lblUserHistTitle.Content = (dgUsers.SelectedItem as UserModel).FirstName + " " + (dgUsers.SelectedItem as UserModel).LastName;
-            clientsCL = new List<CarModel>(
-                carsList.Select(c => new CarModel()
+            _clientsCL = new List<CarModel>(
+                _context.Autos.Select(c => new CarModel()
                 {
+                    ID = c.ID,
                     Brand = c.Brand,
-                    StateNumber = c.StateNumber
-                }).Where(c => c.ClientID == (dgUsers.SelectedItem as UserModel).ID)
-                .ToList());
-            dgCarsUser.ItemsSource = clientsCL;
+                    GraduationYear = c.GraduationYear,
+                    VIN = c.VIN,
+                    StateNumber = c.StateNumber,
+                    UserId = (int)c.UserId
+                }).Where(c => c.UserId == _tmp.ID));
+            dgCarsUser.ItemsSource = _clientsCL.Select(i => new CUModel()
+            {
+                Brand = i.Brand,
+                StateNumber = i.StateNumber
+            });
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Registration.Focus();
+            lblUserHistTitle.Content = _tmp.FirstName + " " + _tmp.LastName;
+            CU_Load();
+            txtUserFName.Text = _tmp.FirstName;
+            txtUserLName.Text = _tmp.LastName;
+            txtUserEmail.Text = _tmp.Email;
+            txtUserPass.Password = _tmp.Password;
+        }
+
+        private void SelectionChanged_Car(object sender, SelectionChangedEventArgs e)
+        {
+            txtCarYear.Text = _clientsCL.Where(i => i.StateNumber == (dgCarsUser.SelectedItem as CUModel).StateNumber).First().GraduationYear;
+            txtCarVin.Text = _clientsCL.Where(i => i.StateNumber == (dgCarsUser.SelectedItem as CUModel).StateNumber).First().VIN;
+        }
+
+        private void BtnAddCar_Click(object sender, RoutedEventArgs e)
+        {
+            AddCarWindow adwDialog = new AddCarWindow();
+            adwDialog.ShowDialog();
+            _context.Autos.Add(new Car()
+            {
+                Brand = adwDialog.Brand,
+                GraduationYear = adwDialog.GradYear,
+                VIN = adwDialog.VIN,
+                StateNumber = adwDialog.StNum,
+                UserId = _tmp.ID
+            });
+            _context.SaveChanges();
+            MessageBox.Show("car added");
+            CU_Load();
+        }
+
+        private void BtnSetBrok_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("тут мала бути форма роботи з broker");
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("save");
+            _tmp.FirstName = txtUserFName.Text;
+            _tmp.LastName = txtUserLName.Text;
+            _tmp.Email = txtUserEmail.Text;
+            _tmp.Password = txtUserPass.Password;
+            _context.SaveChanges();
+            MessageBox.Show("data changed");
+            this.Close();
+        }
+
+        private void wrt_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("хто хоче допиляти?");
+            Excl.WriteToExcel();
         }
     }
 }

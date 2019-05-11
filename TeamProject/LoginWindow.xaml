@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeamProject"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="455.6" Width="400" FontSize="14" Background="ForestGreen" Loaded="Window_Loaded">
+        Title="Login" Height="455.6" Width="400" FontSize="14" WindowStartupLocation="CenterScreen"
+        Background="ForestGreen" Loaded="Window_Loaded">
     <Border Background="Black" CornerRadius="20" Margin="20">
         <StackPanel Margin="20">
             <Label x:Name="lblLogin" Content="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>

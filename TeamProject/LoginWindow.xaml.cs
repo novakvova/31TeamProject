@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TeamProject.Windows;
 
 namespace TeamProject
 {
@@ -23,6 +24,7 @@ namespace TeamProject
     /// </summary>
     public partial class LoginWindow : Window
     {
+        public static string LogName { get; set; }
         public LoginWindow()
         {
             InitializeComponent();
@@ -30,7 +32,8 @@ namespace TeamProject
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection conStr = new SqlConnection(@"Data Source=karaka123.mssql.somee.com; Initial Catalog = karaka123; User ID=gmirakivan_SQLLogin_1; Password=8b1m2f1gnt");
+
+            SqlConnection conStr = new SqlConnection(@"workstation id=teamprj.mssql.somee.com;packet size=4096;user id=Sneiksus_SQLLogin_1;pwd=4p32j6ed1i;data source=teamprj.mssql.somee.com;persist security info=False;initial catalog=teamprj");
             try
             {
                 if (conStr.State == ConnectionState.Closed)
@@ -43,8 +46,9 @@ namespace TeamProject
                 int count = Convert.ToInt32(cmd.ExecuteScalar());
                 if (count == 1)
                 {
-                    MainWindow dashboard = new MainWindow();
-                    dashboard.Show();
+                    LogName = this.txtUsername.Text;
+                    ClientWindow clwDialog = new ClientWindow();
+                    clwDialog.ShowDialog();
                     this.Close();
                 }
                 else
@@ -116,6 +120,7 @@ namespace TeamProject
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateUI();
+            txtUsername.Focus();
         }
     }
 }
