@@ -179,6 +179,10 @@ namespace TeamProject.Windows
             //_tmp = _context.Users.Where(u => u.Email == Email).First();
             lblUserHistTitle.Content = _tmp.FirstName + " " + _tmp.LastName;
             CU_Load();
+            txtUserFName.Text = _tmp.FirstName;
+            txtUserLName.Text = _tmp.LastName;
+            txtUserEmail.Text = _tmp.Email;
+            txtUserPass.Password = _tmp.Password;
         }
 
         //private void SelectionChanged_Item(object sender, SelectionChangedEventArgs e)
@@ -248,11 +252,19 @@ namespace TeamProject.Windows
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("save");
+            //MessageBox.Show("save");
+            _tmp.FirstName = txtUserFName.Text;
+            _tmp.LastName = txtUserLName.Text;
+            _tmp.Email = txtUserEmail.Text;
+            _tmp.Password = txtUserPass.Password;
+            _context.SaveChanges();
+            MessageBox.Show("data changed");
+            this.Close();
         }
 
         private void wrt_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("хто хоче допиляти?");
             Excl.WriteToExcel();
         }
     }
