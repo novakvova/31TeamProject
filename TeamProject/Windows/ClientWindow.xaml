@@ -5,99 +5,100 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeamProject.Windows"
         mc:Ignorable="d"
-        Title="Cabinet" Height="250" Width="400" WindowStartupLocation="CenterScreen"
+        Title="Cabinet" Height="270" Width="420" WindowStartupLocation="CenterScreen"
         Background="YellowGreen" Loaded="Window_Loaded">
     <Window.Resources>
         <Style x:Name="stlTab" TargetType="TabItem">
             <Setter x:Name="hdr" Property="Header" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Name}"/>
         </Style>
     </Window.Resources>
-    
-    <Grid>
-        <Grid.Resources>
-            <Style TargetType="Label">
-                <Setter Property="FontSize" Value="14"/>
-                <Setter Property="HorizontalAlignment" Value="Center"/>
-            </Style>
-            <Style TargetType="TextBox">
-                <Setter Property="FontSize" Value="14"/>
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                <Setter Property="Width" Value="150"/>
-            </Style>
-        </Grid.Resources>
-        <TabControl x:Name="Tabs">
-            <!--<TabItem x:Name="baseTab">
-                <StackPanel>
-                    <DataGrid x:Name="dgUsers" VerticalAlignment="Stretch"
-                              SelectionChanged="SelectionChanged_Item"/>
-                    <DataGrid x:Name="dgCars" VerticalAlignment="Stretch"/>
-                </StackPanel>
-            </TabItem>-->
-            <TabItem x:Name="Registration">
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label x:Name="lblUserHistTitle" Content="userName" Width="250"
-                               HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold"/>
-                        <Button x:Name="btnAddCar" Content="Add car" Height="20" Width="60"
-                                Click="BtnAddCar_Click"/>
-                        <Button x:Name="btnSetBrok" Content="Broker" Height="20" Width="60" Margin="5"
-                                Click="BtnSetBrok_Click"
-                                />
+    <Border Background="Black" CornerRadius="10" Margin="10">
+        <Grid>
+            <Grid.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="Width" Value="150"/>
+                </Style>
+            </Grid.Resources>
+            <TabControl x:Name="Tabs">
+                <!--<TabItem x:Name="baseTab">
+                    <StackPanel>
+                        <DataGrid x:Name="dgUsers" VerticalAlignment="Stretch"
+                                  SelectionChanged="SelectionChanged_Item"/>
+                        <DataGrid x:Name="dgCars" VerticalAlignment="Stretch"/>
                     </StackPanel>
-                    <Grid Height="120">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="0">
-                            <Label x:Name="lblCarsUser" Content="Cars:"/>
-                            <DataGrid x:Name="dgCarsUser" SelectionChanged="SelectionChanged_Car"/>
+                </TabItem>-->
+                <TabItem x:Name="Registration">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label x:Name="lblUserHistTitle" Content="userName" Width="250"
+                                   HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                            <Button x:Name="btnAddCar" Content="Add car" Height="20" Width="60"
+                                    Click="BtnAddCar_Click"/>
+                            <Button x:Name="btnSetBrok" Content="Broker" Height="20" Width="60" Margin="5"
+                                    Click="BtnSetBrok_Click"
+                                    />
+                        </StackPanel>
+                        <Grid Height="120">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <Label x:Name="lblCarsUser" Content="Cars:"/>
+                                <DataGrid x:Name="dgCarsUser" SelectionChanged="SelectionChanged_Car"/>
 
-                            <!--<TextBox x:Name="txtUserFName"/>-->
-                            <!--<Label x:Name="lblUserLName" Content="LastName:"/>
-                            <TextBox x:Name="txtUserLName"/>-->
-                        </StackPanel>
-                        <StackPanel Grid.Column="1">
-                            <Label x:Name="lblCarYear" Content="Year:"/>
-                            <TextBox x:Name="txtCarYear"/>
-                            <Label x:Name="lblCarVin" Content="VIN:"/>
-                            <TextBox x:Name="txtCarVin"/>
-                            <!--<Label x:Name="lblCarNum" Content="Number:"/>
-                            <TextBox x:Name="txtCarNum"/>-->
-                            <!--<PasswordBox x:Name="txtUserPass" FontSize="14" HorizontalContentAlignment="Center"
-                                         Width="150"/>-->
-                        </StackPanel>
-                    </Grid>
-                </StackPanel>
-            </TabItem>
-            <TabItem x:Name="Settings">
-                <StackPanel>
-                    <Label x:Name="lblUserSetTitle" Content="userName"
-                       HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold"/>
-                    <Grid Height="120">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="0">
-                            <Label x:Name="lblUserFName" Content="FirstName:"/>
-                            <TextBox x:Name="txtUserFName"/>
-                            <Label x:Name="lblUserLName" Content="LastName:"/>
-                            <TextBox x:Name="txtUserLName"/>
-                        </StackPanel>
-                        <StackPanel Grid.Column="1">
-                            <Label x:Name="lblUserEmail" Content="Email:"/>
-                            <TextBox x:Name="txtUserEmail"/>
-                            <Label x:Name="lblUserPass" Content="Password:"/>
-                            <PasswordBox x:Name="txtUserPass" FontSize="14" HorizontalContentAlignment="Center"
-                                         Width="150"/>
-                        </StackPanel>
-                    </Grid>
-                    <Button x:Name="btnSave" Content="Save changes"
-                            Height="30" Width="100" VerticalAlignment="Bottom" Click="BtnSave_Click">
-                    </Button>
-                </StackPanel>
-            </TabItem>
-        </TabControl>
-    </Grid>
+                                <!--<TextBox x:Name="txtUserFName"/>-->
+                                <!--<Label x:Name="lblUserLName" Content="LastName:"/>
+                                <TextBox x:Name="txtUserLName"/>-->
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <Label x:Name="lblCarYear" Content="Year:"/>
+                                <TextBox x:Name="txtCarYear"/>
+                                <Label x:Name="lblCarVin" Content="VIN:"/>
+                                <TextBox x:Name="txtCarVin"/>
+                                <!--<Label x:Name="lblCarNum" Content="Number:"/>
+                                <TextBox x:Name="txtCarNum"/>-->
+                                <!--<PasswordBox x:Name="txtUserPass" FontSize="14" HorizontalContentAlignment="Center"
+                                             Width="150"/>-->
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </TabItem>
+                <TabItem x:Name="Settings">
+                    <StackPanel>
+                        <Label x:Name="lblUserSetTitle" Content="userName"
+                           HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                        <Grid Height="120">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <Label x:Name="lblUserFName" Content="FirstName:"/>
+                                <TextBox x:Name="txtUserFName"/>
+                                <Label x:Name="lblUserLName" Content="LastName:"/>
+                                <TextBox x:Name="txtUserLName"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <Label x:Name="lblUserEmail" Content="Email:"/>
+                                <TextBox x:Name="txtUserEmail"/>
+                                <Label x:Name="lblUserPass" Content="Password:"/>
+                                <PasswordBox x:Name="txtUserPass" FontSize="14" HorizontalContentAlignment="Center"
+                                             Width="150"/>
+                            </StackPanel>
+                        </Grid>
+                        <Button x:Name="btnSave" Content="Save changes"
+                                Height="30" Width="100" VerticalAlignment="Bottom" Click="BtnSave_Click">
+                        </Button>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Border>
 </Window>
