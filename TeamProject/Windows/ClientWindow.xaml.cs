@@ -84,8 +84,15 @@ namespace TeamProject.Windows
             //        StateNumber = c.StateNumber
             //    }).Where(c => c.ClientID == 1).ToList());
             #endregion
-            DB_Load();
-            //_tmp = _context.Users.Where(u => u.Email == Email).First();
+
+
+            Email = TeamProject.LoginWindow.LogName;
+            MessageBox.Show(Email);
+
+
+
+            //DB_Load();
+            _tmp = _context.Users.Where(u => u.Email == Email).First();
         }
 
         public void DB_Load()
@@ -135,17 +142,19 @@ namespace TeamProject.Windows
 
         public void CU_Load()
         {
+            MessageBox.Show(_tmp.ID.ToString());
+            int x = _tmp.ID;
             _clientsCL = new List<CarModel>(
-                _carsList.Select(c => new CarModel()
+                _context.Autos.Select(c => new CarModel()
                 {
                     ID = c.ID,
                     Brand = c.Brand,
                     GraduationYear = c.GraduationYear,
                     VIN = c.VIN,
                     StateNumber = c.StateNumber,
-                    BrokerId = (int)c.BrokerId,
+                    //BrokerId = (int)c.BrokerId,   --вилітає завантаження бази
                     UserId = (int)c.UserId
-                }).Where(c => c.UserId == _tmp.ID));
+                }).Where(c => c.UserId == x));
             dgCarsUser.ItemsSource = _clientsCL.Select(i => new CUModel()
             {
                 Brand = i.Brand,
@@ -155,7 +164,7 @@ namespace TeamProject.Windows
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show("ok");
+            MessageBox.Show("ok");
             #region Settings.Focus()
             //Settings.Focus();
             //lblUserSetTitle.Content = (dgUsers.SelectedItem as UserModel).FirstName + " " + (dgUsers.SelectedItem as UserModel).LastName;
@@ -164,9 +173,10 @@ namespace TeamProject.Windows
             //txtUserEmail.Text = (dgUsers.SelectedItem as UserModel).Email;
             //txtUserPass.Password = (dgUsers.SelectedItem as UserModel).Password;
             #endregion
+            
 
             Registration.Focus();
-            _tmp = _context.Users.Where(u => u.Email == Email).First();
+            //_tmp = _context.Users.Where(u => u.Email == Email).First();
             lblUserHistTitle.Content = _tmp.FirstName + " " + _tmp.LastName;
             CU_Load();
         }
@@ -233,7 +243,7 @@ namespace TeamProject.Windows
 
         private void BtnSetBrok_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("тут мала бути форма роботи з broker(");
+            MessageBox.Show("тут мала бути форма роботи з broker");
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)

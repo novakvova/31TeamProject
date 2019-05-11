@@ -24,6 +24,7 @@ namespace TeamProject
     /// </summary>
     public partial class LoginWindow : Window
     {
+        public static string LogName { get; set; }
         public LoginWindow()
         {
             InitializeComponent();
@@ -44,10 +45,13 @@ namespace TeamProject
                 int count = Convert.ToInt32(cmd.ExecuteScalar());
                 if (count == 1)
                 {
-                    ClientWindow clWind = new ClientWindow();
-                    MessageBox.Show("!!!");
-                    clWind.Email = txtUsername.Text;
-                    clWind.ShowDialog();
+                    LogName = this.txtUsername.Text;
+                    MessageBox.Show(LogName);
+                    ClientWindow clwDialog = new ClientWindow();
+
+                    //MessageBox.Show("!!!");
+                    clwDialog.Email = this.txtUsername.Text;
+                    clwDialog.ShowDialog();
                     this.Close();
                 }
                 else
