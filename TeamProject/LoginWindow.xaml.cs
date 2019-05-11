@@ -32,6 +32,7 @@ namespace TeamProject
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
+
             SqlConnection conStr = new SqlConnection(@"workstation id=teamprj.mssql.somee.com;packet size=4096;user id=Sneiksus_SQLLogin_1;pwd=4p32j6ed1i;data source=teamprj.mssql.somee.com;persist security info=False;initial catalog=teamprj");
             try
             {
