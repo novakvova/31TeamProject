@@ -26,13 +26,6 @@
                 </Style>
             </Grid.Resources>
             <TabControl x:Name="Tabs">
-                <!--<TabItem x:Name="baseTab">
-                    <StackPanel>
-                        <DataGrid x:Name="dgUsers" VerticalAlignment="Stretch"
-                                  SelectionChanged="SelectionChanged_Item"/>
-                        <DataGrid x:Name="dgCars" VerticalAlignment="Stretch"/>
-                    </StackPanel>
-                </TabItem>-->
                 <TabItem x:Name="Registration">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -52,20 +45,12 @@
                             <StackPanel Grid.Column="0">
                                 <Label x:Name="lblCarsUser" Content="Cars:"/>
                                 <DataGrid x:Name="dgCarsUser" SelectionChanged="SelectionChanged_Car"/>
-
-                                <!--<TextBox x:Name="txtUserFName"/>-->
-                                <!--<Label x:Name="lblUserLName" Content="LastName:"/>
-                                <TextBox x:Name="txtUserLName"/>-->
                             </StackPanel>
                             <StackPanel Grid.Column="1">
                                 <Label x:Name="lblCarYear" Content="Year:"/>
                                 <TextBox x:Name="txtCarYear"/>
                                 <Label x:Name="lblCarVin" Content="VIN:"/>
                                 <TextBox x:Name="txtCarVin"/>
-                                <!--<Label x:Name="lblCarNum" Content="Number:"/>
-                                <TextBox x:Name="txtCarNum"/>-->
-                                <!--<PasswordBox x:Name="txtUserPass" FontSize="14" HorizontalContentAlignment="Center"
-                                             Width="150"/>-->
                             </StackPanel>
                         </Grid>
                         <Button x:Name="wrt" Content="To Excel" Click="wrt_Click" Width="80"
