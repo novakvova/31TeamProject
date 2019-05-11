@@ -46,11 +46,7 @@ namespace TeamProject
                 if (count == 1)
                 {
                     LogName = this.txtUsername.Text;
-                    MessageBox.Show(LogName);
                     ClientWindow clwDialog = new ClientWindow();
-
-                    //MessageBox.Show("!!!");
-                    clwDialog.Email = this.txtUsername.Text;
                     clwDialog.ShowDialog();
                     this.Close();
                 }

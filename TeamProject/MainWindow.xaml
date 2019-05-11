@@ -44,8 +44,8 @@
                     Background="White" Foreground="Black" FontSize="18"
                         Click="BtnSignup_Click"/>
             </StackPanel>
-            <Button x:Name="wrt" Content="To Excel" Click="wrt_Click" Width="80"
-                    Background="White" Foreground="Black" FontSize="18"/>
+            <!--<Button x:Name="wrt" Content="To Excel" Click="wrt_Click" Width="80"
+                    Background="White" Foreground="Black" FontSize="18"/>-->
         </StackPanel>
     </Border>
 </Window>

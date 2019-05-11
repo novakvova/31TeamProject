@@ -87,7 +87,7 @@ namespace TeamProject.Windows
 
 
             Email = TeamProject.LoginWindow.LogName;
-            MessageBox.Show(Email);
+            //MessageBox.Show(Email);
 
 
 
@@ -142,8 +142,8 @@ namespace TeamProject.Windows
 
         public void CU_Load()
         {
-            MessageBox.Show(_tmp.ID.ToString());
-            int x = _tmp.ID;
+            //MessageBox.Show(_tmp.ID.ToString());
+            //int x = _tmp.ID;
             _clientsCL = new List<CarModel>(
                 _context.Autos.Select(c => new CarModel()
                 {
@@ -154,7 +154,7 @@ namespace TeamProject.Windows
                     StateNumber = c.StateNumber,
                     //BrokerId = (int)c.BrokerId,   --вилітає завантаження бази
                     UserId = (int)c.UserId
-                }).Where(c => c.UserId == x));
+                }).Where(c => c.UserId == _tmp.ID));
             dgCarsUser.ItemsSource = _clientsCL.Select(i => new CUModel()
             {
                 Brand = i.Brand,
@@ -164,7 +164,7 @@ namespace TeamProject.Windows
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("ok");
+            //MessageBox.Show("ok");
             #region Settings.Focus()
             //Settings.Focus();
             //lblUserSetTitle.Content = (dgUsers.SelectedItem as UserModel).FirstName + " " + (dgUsers.SelectedItem as UserModel).LastName;
@@ -249,6 +249,11 @@ namespace TeamProject.Windows
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("save");
+        }
+
+        private void wrt_Click(object sender, RoutedEventArgs e)
+        {
+            Excl.WriteToExcel();
         }
     }
 }

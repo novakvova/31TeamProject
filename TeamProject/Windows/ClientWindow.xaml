@@ -68,6 +68,8 @@
                                              Width="150"/>-->
                             </StackPanel>
                         </Grid>
+                        <Button x:Name="wrt" Content="To Excel" Click="wrt_Click" Width="80"
+                                Background="White" Foreground="Black" FontSize="18"/>
                     </StackPanel>
                 </TabItem>
                 <TabItem x:Name="Settings">
